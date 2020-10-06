@@ -11,4 +11,4 @@ and so on
 I have not worked with terraforms before
 I think this is a filter for terraform config files
 
-#next day wadnesday
+#next day wednesday
