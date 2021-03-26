@@ -20,24 +20,20 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "web" {
-  ami           = data.aws_ami.ubuntu.id
+  ami = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
 
   tags = {
     Name = "HelloWorld"
   }
-data "aws_region" "current" {}
+}
 
 data "aws_caller_identity" "current" {}
 
-output "account_id" {
-  value = data.aws_caller_identity.current.account_id
-}
 
-output "caller_arn" {
-  value = data.aws_caller_identity.current.arn
-}
+data "aws_region" "current" {}
 
-output "caller_user" {
-  value = data.aws_caller_identity.current.user_id
+locals {
+  account_id    = data.aws_caller_identity.current.account_id
+  region        = data.aws_region.current.name
 }
