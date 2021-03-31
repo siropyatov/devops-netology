@@ -1,6 +1,7 @@
 provider "aws" {
   region = "us-west-2"
   alias = "region"
+  profile = "myprofile"
 }
 
 terraform {
@@ -9,6 +10,7 @@ terraform {
     region = "us-west-2"
     key = "terraform.tfstate"
     dynamodb_table = "terraform-locks"
+    profile = "myprofile"
   }
 }
 
@@ -57,5 +59,6 @@ locals {
   }
   web_instance_count_map = {
     test = 0
-    stage = 1}
+    stage = 1
+  }
 }
