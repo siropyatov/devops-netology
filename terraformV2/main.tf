@@ -43,8 +43,8 @@ locals {
     test = "t3.micro"
   }
   web_instance_count_map = {
-    test = 1
-    stage = 2
+    test = 0
+    stage = 1
   }
 }
 
