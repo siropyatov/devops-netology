@@ -1,6 +1,6 @@
 provider "aws" {
   region = "us-west-2"
-  alias = "region"
+#  alias = "region"
 }
 
 #terraform {
@@ -37,7 +37,7 @@ data "aws_ami" "ubuntu" {
 
 locals {
   account_id    = data.aws_caller_identity.current.account_id
-  region        = data.aws_region.current.name
+#  region        = data.aws_region.current.name
   web_instance_type_map = {
     stage = "t3.micro"
     test = "t3.micro"
@@ -53,7 +53,7 @@ resource "aws_instance" "web" {
   #instance_type = "t3.micro"
   instance_type = local.web_instance_type_map[terraform.workspace]
   count = local.web_instance_count_map[terraform.workspace]
-  region = "us-west-2"
+#  region = "us-west-2"
   tags = {
     Name = "HelloWorld"
   }
