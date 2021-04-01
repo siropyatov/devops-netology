@@ -53,7 +53,7 @@ resource "aws_instance" "web" {
   #instance_type = "t3.micro"
   instance_type = local.web_instance_type_map[terraform.workspace]
   count = local.web_instance_count_map[terraform.workspace]
-  region = "us-west-2"
+  #region = "us-west-2"
   tags = {
     Name = "HelloWorld"
   }
