@@ -15,7 +15,7 @@ terraform {
     region = "us-west-2"
     bucket = "v3-terraform-eu-west-2"
     key    = "terraform.tfstate"
-#    dynamodb_table = "terraform-locks"
+##    dynamodb_table = "terraform-locks"
   }
 }
 
