@@ -15,7 +15,7 @@ terraform {
     region = "us-west-2"
     bucket = "v3-terraform-eu-west-2"
     key    = "terraform.tfstate"
-##    dynamodb_table = "terraform-locks"
+#    dynamodb_table = "terraform-locks"
   }
 }
 
@@ -35,7 +35,7 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-locals {
+local {
   account_id    = data.aws_caller_identity.current.account_id
   region        = data.aws_region.current.name
   web_instance_type_map = {
@@ -51,8 +51,8 @@ locals {
 resource "aws_instance" "web" {
   ami = data.aws_ami.ubuntu.id
   #instance_type = "t3.micro"
-  instance_type = locals.web_instance_type_map[terraform.workspace]
-  count = locals.web_instance_count_map[terraform.workspace]
+  instance_type = local.web_instance_type_map[terraform.workspace]
+  count = local.web_instance_count_map[terraform.workspace]
   region = "us-west-2"
   tags = {
     Name = "HelloWorld"
