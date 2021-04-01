@@ -51,8 +51,8 @@ locals {
 resource "aws_instance" "web" {
   ami = data.aws_ami.ubuntu.id
   #instance_type = "t3.micro"
-  instance_type = locals.web_instance_type_map[terraform.workspace]
-  count = locals.web_instance_count_map[terraform.workspace]
+  instance_type = local.web_instance_type_map[terraform.workspace]
+  count = local.web_instance_count_map[terraform.workspace]
   region = "us-west-2"
   tags = {
     Name = "HelloWorld"
