@@ -16,6 +16,13 @@ terraform {
     bucket = "v3-terraform-eu-west-2"
     key    = "terraform.tfstate"
 #    dynamodb_table = "terraform-locks"
+    backend "remote" {
+    hostname     = "app.terraform.io"
+    organization = "nti"
+    workspaces {
+      prefix = "devops-netologyv2"
+    }
+  }
   }
 }
 
