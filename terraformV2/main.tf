@@ -61,7 +61,8 @@ resource "aws_instance" "web" {
     create_before_destroy = true
     prevent_destroy = true
     ignore_changes = [
-      "tags"]
+      tags,
+    ]
   }
 }
 
